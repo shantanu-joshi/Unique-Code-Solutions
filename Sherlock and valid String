@@ -1,0 +1,49 @@
+public static boolean areSame(int arr[])
+    {
+         int  first = arr[0];
+           for (int i=1; i<arr.length; i++)
+               if (arr[i] != first)
+                    return false;
+           return true;
+    }
+
+    public static String isValid(String s) {
+  
+    
+    
+    char[] sj  = s.toCharArray();
+    
+    int count[] = new int[256];
+    
+    for(int i=0;i<sj.length;i++)
+    {
+        count[sj[i]]++;
+    }
+    
+    int[] filteredArray = Arrays.stream(count).filter(num -> num != 0).toArray();
+    int[] unique = Arrays.stream(filteredArray).distinct().toArray();
+    
+    Arrays.sort(filteredArray);
+    
+     if(areSame(filteredArray))
+            
+        {
+            return "YES";
+        }
+        else if(filteredArray[filteredArray.length-2]==filteredArray[filteredArray.length-3] && filteredArray[filteredArray.length-1]-filteredArray[filteredArray.length-2]==1 && filteredArray[0]==filteredArray[1])
+        {
+            
+            return "YES";
+            
+        }
+            else if(unique.length==2 && (filteredArray[filteredArray.length-2]-filteredArray[filteredArray.length-1]==0) && filteredArray[0]!=filteredArray[1])
+            {
+                return "YES";
+            }
+            
+       
+        return "NO";
+   
+    }
+
+}
